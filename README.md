@@ -1,1 +1,1 @@
-This repository contains the lab work I completed for the Mobile Application Development course.
+This repository contains the lab work that I completed for the Mobile Application Development course.
