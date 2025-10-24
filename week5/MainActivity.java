@@ -63,7 +63,61 @@ public class MainActivity extends AppCompatActivity {
         if(win){
             return symbol;
         }
-        //check rows and diagonals
+
+        // checking rows
+        win = true; 
+        for (int j = 0; j < 3; j++) {
+            if (board[row][j] != symbol) {
+                win = false;
+                break;
+            }
+        }
+        if (win) {
+            return symbol;
+        }
+        
+        // checking main diagonal (top-left to bottom-right)
+        if (row == col) {
+            win = true; 
+            for (int i = 0; i < 3; i++) {
+                if (board[i][i] != symbol) {
+                    win = false;
+                    break;
+                }
+            }
+            if (win) {
+                return symbol;
+            }
+        }
+
+        //Checking Anti-Diagonal (top-right to bottom-left)
+        if (row + col == 2) {
+            win = true;
+            for (int i = 0; i < 3; i++) {
+                if (board[i][2 - i] != symbol) {
+                    win = false;
+                    break;
+                }
+            }
+            if (win) {
+                return symbol;
+            }
+        }
+
+        //Check for Draw
+        boolean isDraw = true;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == 0) {
+                    isDraw = false;
+                    break;
+                }
+            }
+            if (!isDraw) break;
+        }
+        if (isDraw) {
+            return 0;
+        }
 
         return -1;
     }
@@ -93,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(gameEnded(row,column) == -1){
-                player1_Turn =!player1_Turn;
+                player1_Turn = !player1_Turn;
             }
             else if(gameEnded(row,column) == 0){
                 Toast.makeText(MainActivity.this, "It's a draw",Toast.LENGTH_LONG).show();
@@ -106,8 +160,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-    //to save our progrress
 
 
     @Override
