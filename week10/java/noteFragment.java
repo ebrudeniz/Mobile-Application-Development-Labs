@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import msku.ceng.madlab.week10.placeholder.PlaceholderContent;
+
 
 /**
  * A fragment representing a list of Items.
